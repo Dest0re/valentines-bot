@@ -1,5 +1,5 @@
 import discord
-from .basehandler import BaseHandler, StopHandleException
+from .basehandler import BaseHandler
 from utils.embed import EmbedText, ErrorText
 
 
