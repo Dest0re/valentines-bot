@@ -10,23 +10,13 @@ class StopHandleException(Exception):
 
 class BaseHandler:
     def __init__(self):
-        self._next: BaseHandler = None
+        self._next: BaseHandler | None = None
 
     async def _handle(self, ctx: discord.ApplicationContext):
         pass
 
     async def _exc(self, ctx: discord.ApplicationContext):
-        user = (
-            User
-            .select()
-            .join(DiscordProfile)
-            .where(DiscordProfile.discord_id == ctx.author.id)
-            .get()
-        )
-
-        if user:
-            user.in_process = False
-            user.save()
+        pass
 
     async def do_handle(self, ctx: discord.ApplicationContext):
         try:
