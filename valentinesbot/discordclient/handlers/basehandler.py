@@ -1,7 +1,5 @@
 import discord
 
-from model import User, DiscordProfile
-
 
 class StopHandleException(Exception):
     def __init__(self, stage: str):
