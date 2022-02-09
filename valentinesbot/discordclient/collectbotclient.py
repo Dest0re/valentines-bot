@@ -4,6 +4,7 @@ from discord.ext import commands
 from utils.embed import ErrorText
 from utils.strings import text_strings as ts
 from discordclient.cogs.debugcog import DebugCog
+from discordclient.cogs.giftingcog import GiftingCog
 
 
 class CollectBotClient(discord.Bot):
@@ -20,3 +21,4 @@ class CollectBotClient(discord.Bot):
 bot = CollectBotClient()
 
 bot.add_cog(DebugCog(bot))
+bot.add_cog(GiftingCog(bot))
