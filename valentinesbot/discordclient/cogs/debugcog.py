@@ -1,5 +1,5 @@
 import discord
-from discord.commands import SlashCommandGroup, slash_command
+from discord.commands import SlashCommandGroup
 
 from .basecog import BaseCog
 

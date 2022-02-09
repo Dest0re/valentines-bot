@@ -3,7 +3,7 @@ from discord.ext import commands
 
 from utils.embed import ErrorText
 from utils.strings import text_strings as ts
-from .debugcog import DebugCog
+from discordclient.cogs.debugcog import DebugCog
 
 
 class CollectBotClient(discord.Bot):
