@@ -7,10 +7,10 @@ from discordclient.handlers import *
 
 async def _handle_command(ctx: discord.ApplicationContext, is_special: bool):
     handler = RegisterSimpleUserHandler()
-    next_handler = handler
+    next_handler = handler.set_next(CheckIfInProcessHandler())
 
     if not is_special:
-        next_handler = handler.set_next(CheckIfCanGiftSpecialCardHandler())
+        next_handler = next_handler.set_next(CheckIfCanGiftSpecialCardHandler())
 
     next_handler = next_handler.set_next(RegisterSimpleCardHandler())
 
