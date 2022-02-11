@@ -8,6 +8,11 @@ from discordclient.cogs.giftingcog import GiftingCog
 
 
 class CollectBotClient(discord.Bot):
+    def __init__(self):
+        intents = discord.Intents.all()
+
+        super().__init__(intents=intents)
+
     async def on_ready(self):
         self.add_listener(self.on_command_error)
 
