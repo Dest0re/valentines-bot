@@ -10,3 +10,4 @@ from .selectreceiver import SelectReceiverHandler
 from .sendpreview import SendPreviewHandler
 from .endhandler import EndHandler
 from .checkifcannotgiftspecialcard import CheckIfCannotGiftSpecialCardHandler
+from .checkifinprocess import CheckIfInProcessHandler
