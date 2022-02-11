@@ -17,3 +17,16 @@ class ValentineCard(BaseModel):
 
     class Meta:
         table_name = 'ValentineCard'
+
+    @classmethod
+    def get_last_presenter_card_or_none(cls, presenter: Presenter):
+        card = (
+            cls
+            .select()
+            .where(cls.presenter == presenter, cls.in_process)
+            .order_by(cls.id.desc())
+            .get_or_none()
+        )
+
+        return card
+
