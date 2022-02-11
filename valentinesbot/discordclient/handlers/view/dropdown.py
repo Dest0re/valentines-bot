@@ -1,12 +1,12 @@
 import asyncio
 import time
+import typing
 
 import discord
 from discord.components import SelectOption
 
 from utils.strings import text_strings as ts
 from utils.embed import WarningText
-from model import GameGenre
 
 
 class PackageSelectOption(SelectOption):
@@ -46,7 +46,7 @@ class GameGenreSelectOption(SelectOption):
 
 
 class Dropdown(discord.ui.Select):
-    def __init__(self, placeholder: str, options: SelectOption, min_values, max_values):
+    def __init__(self, placeholder: str, options: typing.Iterable[SelectOption], min_values, max_values):
         super().__init__(
             placeholder=placeholder, 
             min_values=min_values, 
@@ -77,7 +77,7 @@ class Dropdown(discord.ui.Select):
 
 
 class PersonalDropdown(Dropdown):
-    def __init__(self, user: discord.User, placeholder: str, options: SelectOption, min_values, max_values):
+    def __init__(self, user: discord.User, placeholder: str, options: typing.Iterable[SelectOption], min_values, max_values):
         super().__init__(
             placeholder=placeholder,
             options=options,
@@ -95,7 +95,7 @@ class PersonalDropdown(Dropdown):
 
 
 class OneChoiceDropdown(Dropdown):
-    def __init__(self, placeholder: str, options: SelectOption):
+    def __init__(self, placeholder: str, options: typing.Iterable[SelectOption]):
         super().__init__(
             placeholder=placeholder, 
             options=options,
@@ -108,7 +108,7 @@ class OneChoiceDropdown(Dropdown):
 
 
 class PersonalOneChoiceDropdown(PersonalDropdown):
-    def __init__(self, user, placeholder: str, options: SelectOption):
+    def __init__(self, user, placeholder: str, options: typing.Iterable[SelectOption]):
         super().__init__(
             user=user,
             placeholder=placeholder, 
@@ -119,43 +119,3 @@ class PersonalOneChoiceDropdown(PersonalDropdown):
     
     async def get_choices(self, timeout):
         return (await super().get_choices(timeout))[0]
-
-
-class GamePackageChooseDropdown(PersonalOneChoiceDropdown):
-    def __init__(self, user, options: PackageSelectOption):
-        super().__init__(
-            user=user,
-            placeholder=ts.game_choose_placeholder,
-            options=options
-        )
-
-
-# Можно было отнаследоваться от одного класса Performance, как изначально и планировалось в схеме, но надо торопиться
-class PCPerformanceChooseDropdown(PersonalOneChoiceDropdown):
-    def __init__(self, user, options: PCPerformanceSelectOption):
-        super().__init__(
-            user=user,
-            placeholder=ts.pc_performance_choose_placeholder,
-            options=options
-        )
-
-
-class GameRequirementsChooseDropdown(PersonalOneChoiceDropdown):
-    def __init__(self, user, options: GameRequirementsSelectOption):
-        super().__init__(
-            user=user,
-            placeholder=ts.game_requirements_choose_placeholder,
-            options=options
-        )
-
-
-class PersonalGameGenreChooseDropdown(PersonalDropdown):
-    def __init__(self, user):
-        options = [GameGenreSelectOption(gg) for gg in GameGenre.select()]
-        super().__init__(
-            user=user,
-            placeholder=ts.game_genres_choose_placeholder,
-            options=options,
-            min_values=1,
-            max_values=3
-        )
