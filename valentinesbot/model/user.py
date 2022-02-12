@@ -9,3 +9,7 @@ class User(BaseModel):
 
     class Meta:
         table_name = 'User'
+
+    @classmethod
+    def from_discord_id(cls, discord_id):
+        return cls.get(discord_user_id=discord_id)

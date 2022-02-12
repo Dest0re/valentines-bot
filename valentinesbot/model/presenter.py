@@ -10,3 +10,9 @@ class Presenter(BaseModel):
 
     class Meta:
         table_name = 'Presenter'
+
+    @classmethod
+    def from_discord_id(cls, discord_id):
+        user = User.from_discord_id(discord_id)
+
+        return cls.get_or_create(user=user)[0]
