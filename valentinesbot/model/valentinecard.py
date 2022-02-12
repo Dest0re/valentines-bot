@@ -1,4 +1,4 @@
-from peewee import PrimaryKeyField, ForeignKeyField, BooleanField, TextField
+from peewee import PrimaryKeyField, ForeignKeyField, BooleanField, TextField, DateTimeField
 
 from .basemodel import BaseModel
 from .presenter import Presenter
@@ -14,6 +14,7 @@ class ValentineCard(BaseModel):
     receiver = ForeignKeyField(Receiver, column_name='receiver_id')
     in_process = BooleanField(column_name='is_in_process')
     do_present = BooleanField(column_name='do_present')
+    created_at = DateTimeField(column_name='creation_datetime')
 
     class Meta:
         table_name = 'ValentineCard'
