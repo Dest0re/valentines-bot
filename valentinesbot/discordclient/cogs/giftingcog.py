@@ -1,5 +1,6 @@
 import discord
 from discord.commands import slash_command
+from discord.ext import commands
 
 from .basecog import BaseCog
 from discordclient.handlers import *
@@ -33,10 +34,12 @@ async def _handle_command(ctx: discord.ApplicationContext, is_special: bool):
 
 
 class GiftingCog(BaseCog):
-    @slash_command(name='gift', description='', guild_ids=[940568693723783230])
+    @slash_command(name='gift', description='Подарить валентинку')
+    @commands.dm_only()
     async def _gift(self, ctx: discord.ApplicationContext):
         await _handle_command(ctx, False)
 
-    @slash_command(name='gift-special', description='', guild_ids=[940568693723783230])
+    @slash_command(name='gift-special', description='Подарить ОСОБУЮ валентинку!')
+    @commands.dm_only()
     async def _gift_special(self, ctx: discord.ApplicationContext):
         await _handle_command(ctx, True)
