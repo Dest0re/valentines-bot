@@ -9,42 +9,6 @@ from utils.strings import text_strings as ts
 from utils.embed import WarningText
 
 
-class PackageSelectOption(SelectOption):
-    def __init__(self, game_package):
-        self.game_package = game_package
-        super().__init__(
-            label=game_package.name,
-            description=f'{game_package.price}₽'
-        )
-
-
-class PCPerformanceSelectOption(SelectOption):
-    def __init__(self, pc_performance, emoji):
-        self.pc_performance = pc_performance
-        super().__init__(
-            label=pc_performance.name,
-            description=pc_performance.description,
-            emoji=emoji
-        )
-
-
-class GameRequirementsSelectOption(SelectOption):
-    def __init__(self, game_requirements, emoji):
-        self.game_requirements = game_requirements
-        super().__init__(
-            label=game_requirements.name,
-            description=game_requirements.description,
-            emoji=emoji
-        )
-
-class GameGenreSelectOption(SelectOption):
-    def __init__(self, game_genre):
-        self.game_genre = game_genre
-        super().__init__(
-            label=game_genre.name
-        )
-
-
 class Dropdown(discord.ui.Select):
     def __init__(self, placeholder: str, options: typing.Iterable[SelectOption], min_values, max_values):
         super().__init__(
