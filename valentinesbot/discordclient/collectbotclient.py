@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+from model import User, ValentineCard
 from utils.embed import ErrorText
 from utils.strings import text_strings as ts
 from discordclient.cogs.debugcog import DebugCog
@@ -14,7 +15,9 @@ class CollectBotClient(discord.Bot):
         super().__init__(intents=intents)
 
     async def on_ready(self):
+        ValentineCard.update(in_process=False).execute()
         self.add_listener(self.on_command_error)
+        await self.change_presence(activity=discord.Game(ts.collection_stage_status_text))
 
         print(f'Logged in Discord as {self.user}')
 
