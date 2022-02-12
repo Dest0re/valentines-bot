@@ -1,3 +1,5 @@
+import datetime
+
 import discord
 
 from utils.embed import DebugText, ErrorText
@@ -15,4 +17,4 @@ class RegisterSimpleCardHandler(BaseHandler):
 
         presenter = Presenter.get_or_create(user=user)[0]
 
-        ValentineCard.create(presenter=presenter, in_process=True, is_special=False)
+        ValentineCard.create(presenter=presenter, in_process=True, is_special=False, created_at=datetime.datetime.now())
