@@ -60,7 +60,7 @@ class PersonalYesOrNoButtonsView(discord.ui.View):
 
     async def wait_for_result(self, timeout):
         start_time = time()
-        while self._result == None:
+        while self._result is None:
             await asyncio.sleep(0.1)
             if time() - start_time >= timeout:
                 raise asyncio.TimeoutError
