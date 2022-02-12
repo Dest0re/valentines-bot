@@ -31,4 +31,4 @@ class BaseHandler(AbstractBaseHandler):
                 card.in_process = False
                 card.save()
 
-        await ctx.respond(embed=ErrorText('Что-то пошло не так... Вам придётся начинать сначала!'))
+        await ctx.respond(embed=ErrorText('Что-то пошло не так... Вам придётся начать сначала!'))
