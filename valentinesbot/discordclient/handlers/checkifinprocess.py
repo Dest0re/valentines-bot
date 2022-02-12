@@ -20,3 +20,6 @@ class CheckIfInProcessHandler(BaseHandler):
         if card:
             await ctx.respond(embed=ErrorText('Сперва закончите с предыдущей валентинкой!'))
             raise StopHandleException(str(__class__))
+
+    async def _exc(self, ctx: discord.ApplicationContext):
+        pass
