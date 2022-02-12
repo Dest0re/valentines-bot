@@ -1,8 +1,9 @@
 import discord
 
-from utils.embed import DebugText
+from utils.embed import DebugText, EmbedText
 from .basehandler import BaseHandler
 from model import User, Presenter, ValentineCard
+from utils.strings import text_strings as ts
 
 
 class CheckIfCanGiftSpecialCardHandler(BaseHandler):
@@ -13,15 +14,13 @@ class CheckIfCanGiftSpecialCardHandler(BaseHandler):
             .join(Presenter)
             .join(User)
             .where(
-                ValentineCard.is_special, 
-                ValentineCard.do_present, 
-                not ValentineCard.in_process, 
+                ValentineCard.is_special == True,
+                ValentineCard.do_present == True,
+                not ValentineCard.in_process == False,
                 User.discord_user_id == ctx.author.id
             )
             .execute()
         )
         
         if len(special_cards) < 1:
-            await ctx.respond(embed=DebugText('Остались специальные валентинки'))
-        else:
-            await ctx.respond(embed=DebugText('специальных валентинок не осталось'))
+            await ctx.respond(embed=EmbedText(ts.can_give_special_card))
