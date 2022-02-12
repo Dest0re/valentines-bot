@@ -16,7 +16,7 @@ async def _handle_command(ctx: discord.ApplicationContext, is_special: bool):
 
     if is_special:
         next_handler = next_handler\
-            .set_next(CheckIfCannotGiftSpecialCardHandler)\
+            .set_next(CheckIfCannotGiftSpecialCardHandler())\
             .set_next(MarkCardAsSpecialHandler())
 
     (
