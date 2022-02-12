@@ -2,7 +2,7 @@ import asyncio
 
 import discord
 
-from utils.embed import DebugText, ErrorText
+from utils.embed import DebugText, ErrorText, EmbedText
 from .abstractbasehandler import StopHandleException
 from .basehandler import BaseHandler
 from model import ValentineCard, Presenter, User
@@ -23,7 +23,7 @@ class GetCardContentHandler(BaseHandler):
         if not card:
             raise StopHandleException(str(__class__))
 
-        await ctx.respond(ts.waiting_for_content)
+        await ctx.respond(embed=EmbedText(ts.waiting_for_content))
 
         try:
             message = await ctx.bot.wait_for(
