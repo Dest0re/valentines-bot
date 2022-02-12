@@ -39,7 +39,7 @@ class AskForAnonymityHandler(BaseHandler):
             await ctx.respond(embed=ErrorText(ts.timeout_error))
             raise StopHandleException(str(__class__))
 
-        new_text = "Вы выбрали: " + choice.label
+        new_text = f"Вы выбрали: **{choice.label}**"
 
         dropdown.disabled = True
         await message.edit(embed=SuccessText(new_text), view=discord.ui.View(dropdown))
