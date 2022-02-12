@@ -17,7 +17,8 @@ connection = MySQLDatabase(
     host=env.DATABASE_HOST,
     port=int(env.DATABASE_PORT),
     user=env.MYSQL_USERNAME,
-    passwd=env.MYSQL_PASSWORD
+    passwd=env.MYSQL_PASSWORD,
+    charset='utf8mb4'
 )
 
 connection.connect()
