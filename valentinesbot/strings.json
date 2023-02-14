@@ -1,6 +1,6 @@
 {
   "timeout_error": "Извините, время вышло.",
-  "select_receiver_message": "Пожалуйста, укажите никнейм и тег получателя. (пример - *`Dest0re de Louise y Vega#0202`*)",
+  "select_receiver_message": "Пожалуйста, укажите никнейм и тег получателя. (пример - *`Dest0re \uD83C\uDF84 de Louise y Vega#0202`*)",
   "select_receiver_error": "Вы ошиблись слишком много раз.",
   "member_does_not_exist": "Такого пользователя не существует.",
   "invalid_format": "С вашим сообщением что-то не так. Попробуйте ещё.",
