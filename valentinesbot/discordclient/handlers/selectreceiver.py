@@ -11,7 +11,6 @@ from model import User, Receiver, Presenter, ValentineCard
 
 class SelectReceiverHandler(BaseHandler):
     async def _handle(self, ctx: discord.ApplicationContext):
-        await ctx.respond('ieijfiejfij')
         await ctx.respond(embed=EmbedText(ts.select_receiver_message))
 
         for _ in range(3):
