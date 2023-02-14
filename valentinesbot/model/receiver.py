@@ -9,4 +9,4 @@ class Receiver(BaseModel):
     user = ForeignKeyField(User, column_name='user_id')
 
     class Meta:
-        table_name = 'Receiver'
+        table_name = 'receivers'

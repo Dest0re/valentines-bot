@@ -21,6 +21,7 @@ class CheckIfCanGiftSpecialCardHandler(BaseHandler):
             )
             .execute()
         )
-        
+
+        print(1)
         if len(tuple(special_cards)) < 1:
             await ctx.respond(embed=EmbedText(ts.can_give_special_card))

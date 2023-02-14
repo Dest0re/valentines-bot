@@ -1,3 +1,5 @@
+import asyncio
+
 import discord
 
 from .abstractbasehandler import AbstractBaseHandler, StopHandleException
@@ -12,7 +14,7 @@ class BaseHandler(AbstractBaseHandler):
         except StopHandleException:
             await self._exc(ctx)
         except Exception as e:
-            await self._exc(ctx)
+            asyncio.create_task(self._exc(ctx))
 
             raise e
         else:
@@ -31,4 +33,4 @@ class BaseHandler(AbstractBaseHandler):
                 card.in_process = False
                 card.save()
 
-        await ctx.respond(embed=ErrorText('Что-то пошло не так... Вам придётся начать сначала!'))
+        await ctx.send(embed=ErrorText('Что-то пошло не так... Вам придётся начать с начала!'))

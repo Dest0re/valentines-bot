@@ -9,7 +9,7 @@ class Presenter(BaseModel):
     user = ForeignKeyField(User, column_name='user_id')
 
     class Meta:
-        table_name = 'Presenter'
+        table_name = 'presenters'
 
     @classmethod
     def from_discord_id(cls, discord_id):

@@ -1,24 +1,15 @@
-from peewee import MySQLDatabase
+from peewee import PostgresqlDatabase
 
 from utils import EnvironmentVariables
 
 
 env = EnvironmentVariables(
-    'DATABASE_HOST', 
-    'DATABASE_PORT', 
-    'MYSQL_USERNAME', 
-    'MYSQL_PASSWORD', 
-    'DATABASE_NAME'
+    'PG_URL',
 )
 
 
-connection = MySQLDatabase(
-    database=env.DATABASE_NAME,
-    host=env.DATABASE_HOST,
-    port=int(env.DATABASE_PORT),
-    user=env.MYSQL_USERNAME,
-    passwd=env.MYSQL_PASSWORD,
-    charset='utf8mb4'
+connection = PostgresqlDatabase(
+    database=env.PG_URL,
 )
 
 connection.connect()

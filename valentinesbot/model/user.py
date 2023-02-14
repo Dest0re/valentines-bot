@@ -8,7 +8,7 @@ class User(BaseModel):
     discord_user_id = BigIntegerField(column_name='discord_user_id')
 
     class Meta:
-        table_name = 'User'
+        table_name = 'users'
 
     @classmethod
     def from_discord_id(cls, discord_id):

@@ -17,7 +17,7 @@ class ValentineCard(BaseModel):
     created_at = DateTimeField(column_name='creation_datetime')
 
     class Meta:
-        table_name = 'ValentineCard'
+        table_name = 'valentinecards'
 
     @classmethod
     def get_last_presenter_card_or_none(cls, presenter: Presenter):
@@ -30,4 +30,3 @@ class ValentineCard(BaseModel):
         )
 
         return card
-
